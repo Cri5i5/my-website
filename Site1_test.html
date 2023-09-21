@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Vacation Photos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+        #photo-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Vacation Photos</h1>
+    <div id="photo-container">
+        <img id="photo" src="photo1.jpg" alt="Vacation Photo">
+    </div>
+    <button id="previous">Previous</button>
+    <button id="next">Next</button>
+
+    <script>
+        const photos = [
+            'photo1.jpg',
+            'photo2.jpg',
+            'photo3.jpg',
+            // Add more photo URLs here
+        ];
+
+        let currentIndex = 0;
+        const photoElement = document.getElementById('photo');
+
+        document.getElementById('previous').addEventListener('click', () => {
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = photos.length - 1;
+            }
+            photoElement.src = photos[currentIndex];
+        });
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex++;
+            if (currentIndex >= photos.length) {
+                currentIndex = 0;
+            }
+            photoElement.src = photos[currentIndex];
+        });
+    </script>
+</body>
+</html>
